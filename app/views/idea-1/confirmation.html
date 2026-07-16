@@ -1,0 +1,45 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukPanel({
+      titleText: "Submission complete",
+      html: "Your reference number<br><strong>HDJ2123F</strong>"
+    }) }}
+
+    <p class="govuk-body">We have sent you a confirmation email.</p>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p class="govuk-body">Your submission has been logged and processed at the Department for Education</p>
+
+    <p class="govuk-body">If they require more information from you at this time, they will contact you.</p>
+
+    <div class="govuk-form-group">
+      <a href="/idea-1/home" class="govuk-link">Return to home page</a>
+
+  </div>
+</div>
+
+<script>
+  (function () {
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    var today = new Date();
+    var formattedDate = today.getDate() + ' ' + months[today.getMonth()] + ' ' + today.getFullYear();
+
+    localStorage.setItem('mtdLatestSubmission', JSON.stringify({
+      week: formattedDate,
+      students: '120',
+      submittedBy: 'Louis OREILLY'
+    }));
+  })();
+</script>
+
+{% endblock %}

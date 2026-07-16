@@ -1,0 +1,56 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/idea-1/upload-file"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">File Uploaded
+      <span class="govuk-caption-xl">Week commencing 03 September 2026</span>
+    </h1>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Total enrolled"
+          },
+          value: {
+            text: "120"
+          }
+        },
+        {
+          key: {
+            text: "Change since previous submission"
+          },
+          value: {
+            text: "-5"
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Submit data",
+      href: "/idea-1/confirmation"
+    }) }}
+
+    <div class="govuk-form-group">
+      <a href="/idea-1/upload-file.html" class="govuk-link">Upload a different file</a>
+    </div>
+
+  </div>x
+
+</div>
+
+{% endblock %}

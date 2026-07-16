@@ -5,15 +5,41 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
-
+  <div class="govuk-grid-column-two-thirds">  
     <h1 class="govuk-heading-xl">
       {{ serviceName }}
     </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <div class="card card--live">
+      <div class="card__content">
+        <div class="card__heading-row">
+          <h2 class="govuk-heading-m govuk-!-margin-bottom-0">Idea 2</h2>
+          <span class="govuk-tag govuk-tag--green">Live</span>
+        </div>
+        <p class="govuk-body">The most up to date version of the prototype. This is what's currently being iterated on.</p>
+        <a class="govuk-link govuk-link--no-visited-state card__link" href="/idea-2/home">View idea 2</a>
+      </div>
+    </div>
+
+    <br class="govuk-!-margin-bottom-5">
+
+    <h2 class="govuk-heading-l">All ideas</h2>
+
+    <div class="card">
+      <div class="card__content">
+        <h2 class="govuk-heading-m">Idea 1</h2>
+        <p class="govuk-body">This is a prototype service for submitting data to the Department for Education.</p>
+        <a class="govuk-link govuk-link--no-visited-state card__link" href="/idea-1/home">View idea 1</a>
+      </div>
+    </div>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <a class="side-card" href="/changelog">
+      <div class="side-card__content">
+        <h2 class="govuk-heading-m">Changelog</h2>
+        <p class="govuk-body">Track and input what has changed in the prototype</p>  
+      </div>
+    </a>
   </div>
 </div>
 

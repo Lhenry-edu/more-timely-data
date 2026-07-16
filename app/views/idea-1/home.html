@@ -1,0 +1,144 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}Iteration 0: Submissions – {{ serviceName }}{% endblock %}
+
+{% block beforeContent %}
+
+<div class="account-info">
+  <span class="name govuk-body-s">Louis OREILLY UKPRN: 10000001</span>
+  <a href="#" class="govuk-link">Sign out</a>
+</div>
+{% endblock %}
+
+{% block protoScenarios %}
+  <div class="proto-panel__scenario">
+    <input class="proto-panel__checkbox" type="checkbox" id="toggle-window-closed" data-scenario="window-closed">
+    <label class="proto-panel__label" for="toggle-window-closed">
+      Submission window closed
+      <small>Shows the closed-window notice</small>
+    </label>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+<main class="govuk-main-wrapper" id="main-content" role="main">
+
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Charles Dickens Primary</span>
+        Submissions
+      </h1>
+      <p class="govuk-body-l">Your school must submit enrolment data once a week</p>
+      <div class="govuk-inset-text">
+        The submission window is open every Friday, 9am to 5pm
+      </div>
+      <button class="govuk-button" data-module="govuk-button" type="button" id="make-submission-btn">Make a submission</button>
+
+
+      <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--xl">
+
+
+
+      <table class="govuk-table">
+        <caption class="govuk-table__caption govuk-table__caption--m">Submission History</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Week</th>
+            <th scope="col" class="govuk-table__header">Students</th>
+            <th scope="col" class="govuk-table__header">Submitted by</th>
+            <th scope="col" class="govuk-table__header">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body" id="submission-history-body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">7 September 2026</td>
+            <td class="govuk-table__cell">135</td>
+            <td class="govuk-table__cell">Louis OREILLY</td>
+            <td class="govuk-table__cell">
+              <span data-show-when="window-closed" hidden>Download XML</span>
+              <span data-hide-when="window-closed">
+                <a href="/wac/choose-file" class="govuk-link">Download XML</a>
+              </span>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">3 September 2026</td>
+            <td class="govuk-table__cell">140</td>
+            <td class="govuk-table__cell">Louis OREILLY</td>
+            <td class="govuk-table__cell"><a href="#" class="govuk-link">Download XML</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">27 August 2026</td>
+            <td class="govuk-table__cell">141</td>
+            <td class="govuk-table__cell">Louis OREILLY</td>
+            <td class="govuk-table__cell"><a href="#" class="govuk-link">Download XML</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">20 August 2026</td>
+            <td class="govuk-table__cell">145</td>
+            <td class="govuk-table__cell">Louis OREILLY</td>
+            <td class="govuk-table__cell"><a href="#" class="govuk-link">Download XML</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">13 August 2026</td>
+            <td class="govuk-table__cell">150</td>
+            <td class="govuk-table__cell">Louis OREILLY</td>
+            <td class="govuk-table__cell"><a href="#" class="govuk-link">Download XML</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+</main>
+
+<script>
+  (function () {
+    var btn = document.getElementById('make-submission-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      var scenarios = {};
+      try {
+        scenarios = JSON.parse(localStorage.getItem('mtdProtoScenarios') || '{}');
+      } catch (e) {}
+
+      window.location.href = scenarios['window-closed']
+        ? '/idea-1/service-unavailable'
+        : '/idea-1/upload-file';
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    var latest = null;
+    try {
+      latest = JSON.parse(localStorage.getItem('mtdLatestSubmission') || 'null');
+    } catch (e) {}
+
+    if (!latest) return;
+
+    var tbody = document.getElementById('submission-history-body');
+    if (!tbody) return;
+
+    var scenarios = {};
+    try {
+      scenarios = JSON.parse(localStorage.getItem('mtdProtoScenarios') || '{}');
+    } catch (e) {}
+    var windowClosed = !!scenarios['window-closed'];
+
+    var row = document.createElement('tr');
+    row.className = 'govuk-table__row';
+    row.innerHTML =
+      '<td class="govuk-table__cell">' + latest.week + '</td>' +
+      '<td class="govuk-table__cell">' + latest.students + '</td>' +
+      '<td class="govuk-table__cell">' + latest.submittedBy + '</td>' +
+      '<td class="govuk-table__cell">' +
+      '<span data-show-when="window-closed"' + (windowClosed ? '' : ' hidden') + '>Download XML</span>' +
+      '<span data-hide-when="window-closed"' + (windowClosed ? ' hidden' : '') + '><a href="/wac/choose-file" class="govuk-link">Download XML</a></span>' +
+      '</td>';
+
+    tbody.insertBefore(row, tbody.firstChild);
+  })();
+</script>
+{% endblock %}

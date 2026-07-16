@@ -1,0 +1,38 @@
+[
+  {
+    "id": "cl-6",
+    "idea": "Idea 2",
+    "message": "Added a tile-based homepage covering SBC, EAS, ILR and FE Workforce collections",
+    "date": "2026-07-10"
+  },
+  {
+    "id": "cl-5",
+    "idea": "Idea 2",
+    "message": "Added a \"Reports and data\" section with links to reports, dashboards and audit services",
+    "date": "2026-07-08"
+  },
+  {
+    "id": "cl-4",
+    "idea": "Idea 2",
+    "message": "Added a \"Need help?\" side panel with support links and tools/services",
+    "date": "2026-07-03"
+  },
+  {
+    "id": "cl-3",
+    "idea": "Idea 1",
+    "message": "Added a submission history table showing past weekly submissions",
+    "date": "2026-06-26"
+  },
+  {
+    "id": "cl-2",
+    "idea": "Idea 1",
+    "message": "Added an upload file flow with a confirmation page",
+    "date": "2026-06-20"
+  },
+  {
+    "id": "cl-1",
+    "idea": "Idea 1",
+    "message": "Added a \"submission window closed\" scenario and service-unavailable page",
+    "date": "2026-06-15"
+  }
+]

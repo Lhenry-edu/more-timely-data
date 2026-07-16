@@ -4,3 +4,36 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% block scripts %}
+
+  {# Prototype scenario panel #}
+  <div class="proto-panel" id="proto-panel">
+    <div class="proto-panel__body" id="proto-panel-body" hidden>
+      <p class="proto-panel__title">Iterations</p>
+      <div class="proto-panel__field">
+        <label class="proto-panel__label" for="proto-panel-iteration-select">Jump to iteration</label>
+        <select class="proto-panel__select" id="proto-panel-iteration-select">
+          <option value="">Select an iteration…</option>
+          {% for iteration in iterations %}
+            <option value="{{ iteration.href }}">{{ iteration.title }} ({{ iteration.date }})</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <p class="proto-panel__title">Prototype scenarios</p>
+      {% block protoScenarios %}
+        <p class="proto-panel__empty">No scenarios for this page.</p>
+      {% endblock %}
+    </div>
+    <button class="proto-panel__toggle" id="proto-panel-toggle" aria-expanded="false" aria-controls="proto-panel-body">
+      <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" focusable="false">
+        <path d="M10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        <path fill-rule="evenodd" d="M10 0a1 1 0 0 1 1 1v1.07A7.002 7.002 0 0 1 16.93 8H18a1 1 0 1 1 0 2h-1.07A7.002 7.002 0 0 1 11 16.93V18a1 1 0 1 1-2 0v-1.07A7.002 7.002 0 0 1 3.07 10H2a1 1 0 1 1 0-2h1.07A7.002 7.002 0 0 1 9 1.07V1a1 1 0 0 1 1-1zm-5 10a5 5 0 1 0 10 0 5 5 0 0 0-10 0z"/>
+      </svg>
+      Prototype settings
+    </button>
+  </div>
+
+  <script src="/public/javascripts/prototype-panel.js"></script>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Changelog" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Changelog</h1>
+
+    <p class="govuk-body">A record of what's changed across each idea in this prototype, tracked commit-by-commit.</p>
+
+    {{ govukButton({
+      text: "Make an entry",
+      classes: "govuk-!-margin-bottom-6",
+      attributes: { "data-open-modal": "add-entry-modal" }
+    }) }}
+
+    {% if editEntry %}
+      <h2 class="govuk-heading-l" id="edit-form">Edit entry</h2>
+
+      <form action="/changelog/edit/{{ editEntry.id }}" method="post" novalidate>
+
+        {{ govukCharacterCount({
+          id: "message",
+          name: "message",
+          maxlength: 300,
+          label: { text: "Message" },
+          value: editEntry.message
+        }) }}
+
+        {{ govukButton({ text: "Save changes" }) }}
+        {{ govukButton({ text: "Cancel", href: "/changelog", classes: "govuk-button--secondary" }) }}
+
+      </form>
+
+    {% endif %}
+
+    <h2 class="govuk-heading-l">Entries</h2>
+
+    {% for entry in entries %}
+      <div class="changelog-entry">
+        <span class="govuk-tag {{ 'govuk-tag--green' if entry.idea == 'Idea 2' else 'govuk-tag--blue' }}">{{ entry.idea }}</span>
+
+        <p class="govuk-body govuk-!-margin-top-2 govuk-!-margin-bottom-1">{{ entry.message }}</p>
+
+        <p class="govuk-body-s govuk-!-margin-bottom-2">
+          {{ entry.date }}
+          &middot;
+          <a class="govuk-link" href="/changelog?edit={{ entry.id }}#edit-form">Edit</a>
+        </p>
+      </div>
+    {% else %}
+      <p class="govuk-body">No changelog entries yet.</p>
+    {% endfor %}
+
+    <p class="govuk-body govuk-!-margin-top-4">
+      <a class="govuk-link" href="/">Back to all ideas</a>
+    </p>
+
+  </div>
+</div>
+
+<dialog class="changelog-modal" id="add-entry-modal" aria-labelledby="add-entry-modal-title">
+  <form action="/changelog/add" method="post" novalidate>
+
+    <h2 class="govuk-heading-l" id="add-entry-modal-title">Make an entry</h2>
+
+    {{ govukCharacterCount({
+      id: "add-message",
+      name: "message",
+      maxlength: 300,
+      label: { text: "Message" }
+    }) }}
+
+    <div class="changelog-modal__actions">
+      {{ govukButton({ text: "Add entry", classes: "govuk-!-margin-bottom-0" }) }}
+      {{ govukButton({
+        text: "Cancel",
+        classes: "govuk-button--secondary govuk-!-margin-bottom-0",
+        attributes: { type: "button", "data-close-modal": "true" }
+      }) }}
+    </div>
+
+  </form>
+</dialog>
+
+<script src="/public/javascripts/changelog-modal.js" defer></script>
+
+{% endblock %}

@@ -4,3 +4,306 @@
 // 
 
 // Add extra styles here
+
+.panel-grey {
+    background-color: #f3f2f1;
+}
+
+.flex-row {
+    display:flex;
+    flex-direction: row;
+}
+
+.card {
+    position: relative;
+    border: 1px solid #b1b4b6;
+    margin-bottom: 20px;
+
+    &:hover {
+        background-color: #f8f8f8;
+    }
+
+    &__content {
+        padding: 20px;
+    }
+
+    &--live {
+        border-color: #00703c;
+        border-width: 2px;
+    }
+
+    &__heading-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    &__link {
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+
+        &:focus::after {
+            outline: 3px solid #ffdd00;
+            outline-offset: 0;
+        }
+    }
+}
+
+
+.tile-grid {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-gap: 20px;
+}
+
+.tile-group {
+    display: block;
+}
+
+.tile {
+    min-height: 80px;
+    background-color: #1d70b8;
+    color: #fff;
+    text-decoration: none;
+    padding: 11px;
+    display: block;
+}
+
+.tile > span {
+    color: #fff;
+}
+
+
+.tile-label {
+    background-color: #00703c;
+    color: #fff;
+    margin-top: 5px;
+    padding: 8px;
+    padding-left: 11px;
+}
+
+.grey {
+    background-color: #f8f8f8;
+    color:#1d70b8;
+    border: 1px solid #b1b4b6;
+    border-bottom: 0;
+    min-height: 80px;
+    display: block;
+    padding: 11px;
+    text-decoration: none;
+}
+
+.grey-label {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #b1b4b6;
+    margin-top: 0;
+    padding: 8px;
+    padding-left: 11px;
+}
+
+.side-container {
+    padding: 15px 15px;
+    border-top: 8px solid #1d70b8;
+}
+
+// proto toggle frame
+
+// === Prototype scenario panel ===
+
+.proto-panel {
+  position: fixed;
+  bottom: 0;
+  right: 24px;
+  z-index: 9999;
+  width: 280px;
+  font-family: inter, sans-serif;
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: #0b0c0c;
+    color: #ffffff;
+    border: 0;
+    border-top: 3px solid #1d70b8;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+
+    &:hover {
+      background: #262626;
+    }
+
+    &:focus {
+      outline: 3px solid #ffdd00;
+      outline-offset: 0;
+    }
+  }
+
+  &__body {
+    background: #0b0c0c;
+    padding: 16px;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #b1b4b6;
+    margin: 20px 0 14px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__field {
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid #262626;
+
+    .proto-panel__label {
+      display: block;
+      margin-bottom: 6px;
+    }
+  }
+
+  &__select {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #262626;
+    color: #ffffff;
+    border: 1px solid #b1b4b6;
+
+    &:focus {
+      outline: 3px solid #ffdd00;
+      outline-offset: 0;
+    }
+  }
+
+  &__scenario {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #262626;
+
+    &:first-of-type {
+      border-top: 1px solid #262626;
+    }
+  }
+
+  &__checkbox {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+    accent-color: #1d70b8;
+  }
+
+  &__label {
+    font-size: 13px;
+    line-height: 1.4;
+    cursor: pointer;
+    color: #ffffff;
+
+    small {
+      display: block;
+      color: #b1b4b6;
+      font-size: 11px;
+      margin-top: 3px;
+    }
+  }
+
+  &__empty {
+    color: #b1b4b6;
+    font-size: 13px;
+    margin: 0;
+    font-style: italic;
+  }
+}
+
+.changelog-entry {
+    padding: 15px 0;
+    border-bottom: 1px solid #b1b4b6;
+
+    &:first-of-type {
+        border-top: 1px solid #b1b4b6;
+    }
+
+    code {
+        font-family: "Courier New", monospace;
+        background-color: #f3f2f1;
+        padding: 1px 4px;
+    }
+}
+
+.changelog-modal {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    border: 0;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+
+    &::backdrop {
+        background-color: rgba(11, 12, 12, 0.65);
+    }
+
+    &__actions {
+        display: flex;
+        gap: 10px;
+    }
+}
+
+.side-card {
+    display: block;
+    border: 1px solid #b1b4b6;
+    text-decoration: none;
+    color: #0b0c0c;
+    margin-bottom: 20px;
+    background-color: #f3f2f1;
+    padding: 20px;
+
+    // Aligns top edge with the "Idea 2" card once columns sit side by side
+    @media (min-width: 641px) {
+        margin-top: 100px;
+    }
+
+    &:hover {
+        background-color: #eae8e6;
+    }
+
+    &:focus {
+        outline: 3px solid #ffdd00;
+        outline-offset: 0;
+        background-color: #eae8e6;
+    }
+}
+
+.account-info {
+  text-align: right;
+  padding: 1em 0 0 0;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+.name {
+  padding-right: 10px;
+}

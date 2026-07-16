@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/idea-2/home"
+  }) }}
+{% endblock %}
+
+
+{% block protoScenarios %}
+  <div class="proto-panel__scenario">
+    <input class="proto-panel__checkbox" type="checkbox" id="toggle-file-uploaded" data-scenario="file-uploaded">
+    <label class="proto-panel__label" for="toggle-file-uploaded">
+      File already uploaded this week
+      <small>Shows a previously submitted file notice</small>
+    </label>
+  </div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+
+    <h1 class="govuk-heading-xl">Choose File to Upload
+      <span class="govuk-caption-xl">Week commencing 03 September 2026</span>
+    </h1>
+
+
+    {# Alternate state: file already uploaded this week #}
+    <div data-show-when="file-uploaded" hidden>
+      <div class="govuk-notification-banner" role="alert">
+        <div class="govuk-notification-banner__header">
+        </div>
+        <div class="govuk-notification-banner__content">
+          <p class="govuk-heading-s">A submission has already been made today</p>
+          <p class="govuk-body">Louis OREILLY submitted file WEC-39023-4390439.XML Any new submission will overwrite this one</p>
+          <a class="govuk-link" href="/idea-2/submission-history">View submission history</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="govuk-body">Before uploading your file you should make sure that:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>It's an XML or ZIP format</li>
+      <li>the data it contains is as complete as possible</li>
+      <li>the data it contains is as accurate as possible</li>
+    </ul>
+
+    {{ govukFileUpload({
+      id: "wac-file",
+      name: "wacFile",
+      label: {
+        text: "Select a file to upload",
+        classes: "govuk-label--s"
+      }
+    }) }}
+
+    {{ govukButton({
+      text: "Upload file",
+      href: "/idea-2/data-validation"
+    }) }}
+
+  </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

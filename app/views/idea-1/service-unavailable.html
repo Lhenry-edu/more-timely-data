@@ -1,0 +1,26 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  GOV.UK page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/idea-1/home"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-three-quarters">
+    <div class="govuk-panel panel-grey" role="region" aria-labelledby="service-unavailable-panel-title">
+      <h1 class="govuk-panel__title" id="service-unavailable-panel-title">This service is currently unavailable</h1>
+    </div>
+    <p class="govuk-body">This service is only available every Friday from 9am to 5pm.</p>
+    <button class="govuk-button" data-module="govuk-button" onclick="window.location.href='/idea-1/home'">Return to home page</button>
+  </div>
+</div>  
+
+{% endblock %}

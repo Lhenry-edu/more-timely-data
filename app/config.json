@@ -1,5 +1,5 @@
 {
-  "serviceName": "More Timely Data",
+  "serviceName": "Submit Learner Data",
   "useServiceNavigation": true,
   "plugins": {
     "govuk-frontend": {

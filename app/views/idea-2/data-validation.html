@@ -15,8 +15,8 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">File Uploaded
-      <span class="govuk-caption-xl">Week commencing 03 September 2026</span>
+    <h1 class="govuk-heading-xl">Your upload summary
+      <span class="govuk-caption-xl">Week commencing 3 September 2026</span>
     </h1>
 
     {{ govukSummaryList({
@@ -31,25 +31,41 @@
         },
         {
           key: {
-            text: "Change since previous submission"
+            text: "New enrolments"
           },
           value: {
-            text: "-5"
+            text: "10"
+          }
+        },
+        {
+          key: {
+            text: "Withdrawals"
+          },
+          value: {
+            text: "5"
+          }
+        },
+        {
+          key: {
+            text: "Net change"
+          },
+          value: {
+            text: "+5"
           }
         }
       ]
     }) }}
 
     {{ govukButton({
-      text: "Submit data",
+      text: "Submit",
       href: "/idea-2/confirmation"
     }) }}
 
     <div class="govuk-form-group">
-      <a href="/wac/choose-file" class="govuk-link">Upload a different file</a>
+      <a href="/idea-2/upload-file" class="govuk-link">Upload a different file</a>
     </div>
 
-  </div>x
+  </div>
 
 </div>
 

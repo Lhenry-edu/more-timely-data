@@ -46,12 +46,22 @@
       </div>
     </div>
 
-    <p class="govuk-body">Before uploading your file you should make sure that:</p>
+    <p class="govuk-body">Before uploading your file, make sure that:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>It's an XML or ZIP format</li>
-      <li>the data it contains is as complete as possible</li>
-      <li>the data it contains is as accurate as possible</li>
+      <li>it is in CSV format</li>
+      <li>it is named FE/DD/MM/YYYY</li>
+      <li>the data is as complete as possible</li>
+      <li>the data is as accurate as possible</li>
+      <li>you submit your data once a week</li>
     </ul>
+
+ <div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-visually-hidden">Warning</span>
+    Submitting another file in the same week will overwrite the data you previously submitted.
+  </strong>
+</div>
 
     {{ govukFileUpload({
       id: "wac-file",
@@ -67,6 +77,7 @@
       href: "/idea-2/data-validation"
     }) }}
 
+   
   </div>
 
   </div>

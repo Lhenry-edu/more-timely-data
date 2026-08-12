@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block containerStart %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        You've already submitted a file this week
+      </h1>
+
+      <form class="form" action="/path/of/next/page" method="post">
+
+        <p>
+          You submitted file <b>2526_4903403590.csv</b> on 3 September 2026. Any new submission will overwrite this one.
+        </p>
+
+        <p><b>
+          If you continue, this file will replace the data you previously submitted.
+        </p></b>
+
+        {{ govukButton({
+          text: "Replace submission",
+          href: "/idea-2/data-validation"
+        }) }}
+
+      </form>
+ <div class="govuk-form-group">
+      <a href="/idea-2/upload-file" class="govuk-link">Go back</a>
+    </div>
+
+
+    </div>
+  </div>
+
+{% endblock %}
